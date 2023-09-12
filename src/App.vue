@@ -6,10 +6,6 @@ export default {
 		return {};
 	},
 	components: { AppHeader },
-
-	methods: {
-		fetchCard() {},
-	},
 };
 </script>
 
