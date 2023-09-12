@@ -3,21 +3,43 @@ import axios from "axios";
 export default {
 	data() {
 		return {
-      title:'hellos',s
+			title: "Yu-Gi-Ho- Api",
 			cards: [],
 		};
 	},
-
+	methods: {
+		fetchData() {
+			axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0").then((response) => {
+				this.cards = response.data.data;
+				console.log(response.data.data);
+			});
+		},
+	},
 	created() {
-		axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php").then((response) => {
-			this.cards = response.data.results;
-		});
+		this.fetchData();
 	},
 };
 </script>
 
 <template>
-	<h1>{{ title }}</h1>
+	<section class="container text-center">
+		<div class="row">
+			<h1>{{ title }}</h1>
+			<div class="col-2" v-for="card in cards" :key="card.id">
+				<img :src="card.card_images[0].image_url" class="card-img" />
+
+				{{ card.name }}
+				{{ card.archetype }}
+			</div>
+		</div>
+	</section>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+h1 {
+	margin-bottom: 20px;
+}
+.card-img {
+	background-color: orange;
+}
+</style>
