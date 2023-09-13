@@ -7,12 +7,18 @@ export default {
 		return {};
 	},
 	components: { AppHeader, SearchBar },
+
+	methods: {
+		andleSearch(term) {
+			console.log("serced term" + term);
+		},
+	},
 };
 </script>
 
 <template>
 	<div class="container">
-		<SearchBar />
+		<SearchBar @form-submit="andleSearch()" placeholder="Search attribute" select="attribute" />
 	</div>
 	<AppHeader />
 </template>

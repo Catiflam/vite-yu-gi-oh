@@ -5,12 +5,15 @@ export default {
 		return {
 			title: "Yu-Gi-Ho- Api",
 			archetypes: [],
+			term: "",
 		};
 	},
 	props: {
 		placeholder: String,
 		select: String,
 	},
+
+	emits: ["form-submit"],
 
 	methods: {
 		featchType() {
@@ -27,13 +30,13 @@ export default {
 </script>
 
 <template>
-	<form action="">
+	<form @submit.prevent="$emit('form-submit', term)">
 		<h1>{{ title }}</h1>
 		<div class="input-group mb-3">
-			<input type="text" class="form-control" :placeholder="placeholder || 'search'" />
+			<input type="text" class="form-control" v-model="term" :placeholder="placeholder || 'search'" />
 		</div>
 		<select class="form-select mb-4 w-25">
-			<option selected>Open this select menu</option>
+			<option selected>{{ select || "select" }}</option>
 			<option value="1">Alien</option>
 			<option value="2">Noble Knight</option>
 			<option value="3">Tainted Treasure</option>
