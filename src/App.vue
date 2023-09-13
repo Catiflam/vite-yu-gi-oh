@@ -1,15 +1,19 @@
 <script>
 import AppHeader from "./components/AppHeader.vue";
+import SearchBar from "./components/SearchBar.vue";
 
 export default {
 	data() {
 		return {};
 	},
-	components: { AppHeader },
+	components: { AppHeader, SearchBar },
 };
 </script>
 
 <template>
+	<div class="container">
+		<SearchBar />
+	</div>
 	<AppHeader />
 </template>
 

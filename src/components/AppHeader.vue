@@ -3,7 +3,6 @@ import axios from "axios";
 export default {
 	data() {
 		return {
-			title: "Yu-Gi-Ho- Api",
 			cards: [],
 		};
 	},
@@ -11,7 +10,7 @@ export default {
 		fetchData() {
 			axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0").then((response) => {
 				this.cards = response.data.data;
-				console.log(response.data.data);
+				// console.log(response.data.data);
 			});
 		},
 	},
@@ -24,7 +23,6 @@ export default {
 <template>
 	<section class="container text-center">
 		<div class="row">
-			<h1>{{ title }}</h1>
 			<div class="col-2" v-for="card in cards" :key="card.id">
 				<img :src="card.card_images[0].image_url" class="card-img" />
 
@@ -36,9 +34,6 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-h1 {
-	margin-bottom: 20px;
-}
 .card-img {
 	background-color: orange;
 }
