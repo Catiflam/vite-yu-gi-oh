@@ -2,7 +2,7 @@
 export default {
 	data() {
 		return {
-			selectedData: "",
+			selectData: "",
 		};
 	},
 	props: {
@@ -15,8 +15,8 @@ export default {
 
 <template>
 	<div class="container mt-5">
-		<select v-model="selectedData" @change="$emit('change-selection', selectedData)" class="form-select mb-4 w-25">
-			<option value="" selected>seleziona un tipo</option>
+		<select v-model="selectData" @change="$emit('change-selection', selectData)" class="form-select mb-4 w-25">
+			<option value="" selected>Seleziona un Valore</option>
 			<option :value="option" v-for="option in data">{{ option }}</option>
 		</select>
 	</div>
